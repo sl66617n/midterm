@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Add Record Form</title>
+<style>
+body {
+    background-color: #9bf442;
+}
+body {
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+</style>
+</head>
+
+<body>
+
+      <h1>School Assignment</h1>
+<form method="GET">
+    <p>
+        <label for="class">course:</label>
+        <input type="text" name="class" id="class">
+    </p>
+    <p>
+        <label for="assignment">assignment:</label>
+        <input type="text" name="assignment" id="assignment">
+    </p>
+    <p>
+        <label for="dueDate">dueDate:</label>
+        <input type="date" name="dueDate" id="dueDate">
+    </p>
+
+    <input type="submit" value="Submit" onclick="addtoDB()">
+</form
+<p id=”submitted></p>
+
+<p><a href="./OutputHTMLtable_midterm.php">Track Assignment</a > </p>
+
+<script>
+function addtoDB() {
+  var xhttp; 
+  xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (xhttp.readyState == 4 && xhttp.status == 200) {
+        document.getElementById("submitted").innerHTML = "form submitted";
+    }
+  };
+  var course = document.getElementById('class').value;
+   var assignment = document.getElementById('assignment').value;
+   var data = document.getElementById('dueDate').value;
+   var queryString = "?class=" + course +  "&assignment=" + assignment + "&dueDate=" + dueDate;
+ 
+   console.log(queryString);
+   xhttp.open("GET", "insert_midterm.php" + queryString, true);
+   xhttp.send(null); 
+
+}
+</script>
